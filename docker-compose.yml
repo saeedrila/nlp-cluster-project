@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  nlp-worker:
+    build: .
+    deploy:
+      replicas: 1
+    volumes:
+      - ./data:/app/data
+    environment:
+      - PYTHONUNBUFFERED=1  # Force unbuffered output
+    command: python -m src.nlp_processor  # Specify the command to run your script
